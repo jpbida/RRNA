@@ -5,68 +5,52 @@
 Internal function to translate and rotate a secondary structure plot
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Given a coordinate file, a point, and an angle in radians transformFold rotates the fold around the given point the given number of radians.  
 }
 \usage{
 transformFold(dat, x0, y0, ang)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
-%%     ~~Describe \code{dat} here~~
+Coordinate file containing multiple RNA folds
 }
   \item{x0}{
-%%     ~~Describe \code{x0} here~~
+x coordinate of center of rotation
 }
   \item{y0}{
-%%     ~~Describe \code{y0} here~~
+y coordinate of center of rotation
 }
   \item{ang}{
-%%     ~~Describe \code{ang} here~~
+angle of rotation in radians
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+dat frame containing the rotated coordinates
 }
 \author{
-%%  ~~who you are~~
+JP Bida
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{alignCoord}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (dat, x0, y0, ang) 
-{
-    x <- dat$x
-    y <- dat$y
-    new <- rotateV(x, y, x0, y0, ang)
-    dat$x <- new$x
-    dat$y <- new$y
-    dat
-  }
+ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+
+c1=ct2coord(ct)
+
+RNAPlot(c1)
+
+c2=transformFold(c1,0,0,pi/2)
+c3=transformFold(c2,0,0,pi/2)
+c4=transformFold(c3,0,0,pi/2)
+
+RNAPlot(c2,add=TRUE)
+RNAPlot(c3,add=TRUE)
+RNAPlot(c4,add=TRUE)
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
+\keyword{ RNA }
+\keyword{ transform }% __ONLY ONE__ keyword per line

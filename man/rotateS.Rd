@@ -5,71 +5,39 @@
 Internal function to rotate a single point
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Rotates a point a given angle around a given center point.
 }
 \usage{
 rotateS(x2, y2, x0, y0, ang)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x2}{
-%%     ~~Describe \code{x2} here~~
+x coordinate of the position being rotated
 }
   \item{y2}{
-%%     ~~Describe \code{y2} here~~
+y coordinate of the position being rotated
 }
   \item{x0}{
-%%     ~~Describe \code{x0} here~~
+x coordinate of the center of rotation
 }
   \item{y0}{
-%%     ~~Describe \code{y0} here~~
+y coordinate of the center of rotation
 }
   \item{ang}{
-%%     ~~Describe \code{ang} here~~
+rotatation angle in radians
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+Returns a rotated point
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+JP Bida
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x2, y2, x0, y0, ang) 
-{
-    pt <- NULL
-    x1 <- x2 - x0
-    y1 <- y2 - y0
-    pt[1] <- x1 * cos(ang) - y1 * sin(ang) + x0
-    pt[2] <- y1 * cos(ang) + x1 * sin(ang) + y0
-    pt
-  }
+### Rotate a point 90 degress ###
+rotateS(0,1,0,0,pi/2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ rotation }

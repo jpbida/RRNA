@@ -5,5 +5,5 @@ Version: 1.0
 Date: 2015-07-27
 Author: JP Bida
 Maintainer: JP Bida <bida.john@gmail.com>
-Description: RRNA is a R package for creating and manipulating RNA secondary structure plots.
+Description: Functions for creating and manipulating RNA secondary structure plots.
 License: GPL-3

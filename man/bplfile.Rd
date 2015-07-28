@@ -1,73 +1,39 @@
 \name{bplfile}
 \alias{bplfile}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Creates a bpl file from a coordinate file 
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+A bpl file can be created from a given coordinate file for inputing into other RNA visulatization programs
 }
 \usage{
 bplfile(dat, name)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{dat}{
-%%     ~~Describe \code{dat} here~~
+Coordinate file created by ct2coord or loadCoords functions 
+\code{
+ct=makeCt("((((...))))","AAAACCCUUUU")
+### Create the coordinate file ###
+dat=ct2coord(ct)
+}
 }
   \item{name}{
-%%     ~~Describe \code{name} here~~
+Name of the file outputed 
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+Creates the file with the given "name"
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+JP Bida
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+ct=makeCt("((((...))))","AAAACCCUUUU")
+### Create the coordinate file ###
+dat=ct2coord(ct)
 
-## The function is currently defined as
-function (dat, name) 
-{
-    seq <- paste(dat$seq, collapse = "")
-    fileo = paste(">", name, sep = "")
-    fileo = paste(fileo, "\n", seq, "\n", sep = "")
-    fileo = paste(fileo, "\n$ list", sep = "")
-    for (i in 1:length(dat$num)) {
-        if (dat$bound[i] == -1) {
-        }
-        else {
-            fileo = paste(fileo, "\n", (dat$num[i] + 1), " ", 
-                (dat$bound[i] + 1))
-        }
-    }
-    write(fileo, file = name)
-  }
+bplfile(dat,"test.bpl")
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ RNA }
+\keyword{ bpl }% __ONLY ONE__ keyword per line

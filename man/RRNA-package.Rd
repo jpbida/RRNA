@@ -3,11 +3,10 @@
 \alias{RRNA}
 \docType{package}
 \title{
-RRNA is a R package for plotting and manipulating RNA secondary structures.
+RNA secondary structure ploting
 }
 \description{
-RRNA can take inputs from Vienna RNA or any secondary structure program that 
-produces CT files and let's you make plots of them directly in R. 
+Set of functions for creating and manipulating RNA secondary structure plots from CT files or bracket notations.  
 }
 \details{
 \tabular{ll}{
@@ -23,16 +22,10 @@ License: \tab GPL-3\cr
 JP Bida
 Maintainer: JP Bida <bida.john@gmail.com
 }
-\references{
-}
 \keyword{ package }
-\seealso{
-}
 \examples{
-\code{
-ct=makeCT("AAAAGGUUUU","((((..))))")
+### Create a CT file from bracket notation
+ct=makeCt("(((...(((...)))...(((...)))...)))","AAAUUUCCCAAAGGGUUUAAAGGGUUUCCCUUU")
 coord=ct2coord(ct)
-RNAPlot(coord)
-}
-}
+RNAPlot(coord,hl=c("GGGUUU","AAAUUU"),seqcols=c(2,4),labTF=TRUE)
 }

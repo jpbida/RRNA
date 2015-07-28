@@ -2,61 +2,54 @@
 \alias{loadCt}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-loads a CT file into an R data frame
+Loads a CT file into an R data frame
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+A variety of RNA secondary structure prediction programs produce CT files. You can load these CT files into 
+R using the loadCT function.
 }
 \usage{
 loadCt(file)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{file}{
-%%     ~~Describe \code{file} here~~
+The name of the CT file being loaded
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+Returns at data frame containing the CT file data 
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+JP Bida
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{RNAPlot}}
+\code{\link{aptPlotCT}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+### Create a CT file with PseudoKnots ###
+pk=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+pk$bound[pk$pos==20]=42
+pk$bound[pk$pos==19]=43
+pk$bound[pk$pos==43]=19
+pk$bound[pk$pos==42]=20
 
-## The function is currently defined as
-function (file) 
-{
-    input <- read.table(file = file, skip = 1)
-    names(input) = c("pos", "seq", "before", "after", "bound", 
-        "pos2")
-    input$seq <- as.character(input$seq)
-    input
-  }
+### Create a CT file for testing ###
+write.table(pk[,c(1,4,2,3,6,5)],file="test.ct",row.names=FALSE,col.names=TRUE)
+
+ctfile=loadCt("test.ct")
+
+### Before using ct2coord you need to remove the pseudo knots ###
+
+l=pseudoKnot(ctfile)
+dat=l[[2]]
+cd=ct2coord(dat)
+RNAPlot(cd)
+
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ RNA }
+\keyword{ CT }% __ONLY ONE__ keyword per line

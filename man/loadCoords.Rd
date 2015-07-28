@@ -1,76 +1,46 @@
 \name{loadCoords}
 \alias{loadCoords}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-loads a coordinate file into a data frame
+Loads a coordinate file into a data frame
 }
 \description{
-Coordinate files can be created from the viennaRNA library. See example C programs at 
-
+Coordinate files can be created from the viennaRNA library. 
 }
 \usage{
 loadCoords(filename)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{filename}{
-%%     ~~Describe \code{filename} here~~
+Name of the coordinate file being loaded
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Data frame containing the coordinate file
 }
 \references{
-%% ~put references to the literature/web site here ~
+The RRNAFold program generates the coordinate files used by RRNA
+
+\url{https://github.com/jpbida/ViennaScripts}
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+JP Bida
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+### Create a test coordinate file using ct2coord ###
+ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+coord=ct2coord(ct)
+### add an id ###
+coord$id=1
 
-## The function is currently defined as
-function (filename) 
-{
-    data <- read.table(file = filename, sep = ",", header = FALSE)
-    if (dim(data)[2] == 6) {
-        names(data) <- c("id", "x", "y", "seq", "num", "bound")
-    }
-    else {
-        if (dim(data)[2] == 7) {
-            names(data) <- c("id", "x", "y", "seq", "num", "bound", 
-                "energy")
-        }
-        else {
-            data = NULL
-            print(paste("The file ", filename, " does not have the correct number of columns", 
-                sep = ""))
-            print(paste("Expected 6 or 7, found ", dim(data)[2], 
-                sep = ""))
-        }
-    }
-    data
-  }
+### write out test file ###
+write.table(coord[,c('id','x','y','seq','num','bound')],col.names=FALSE,row.names=FALSE,sep=",",file="test.cr")
+
+### Read in the coordinate file ##
+input=loadCoords("test.cr")
+
+### Plot the file using RNAPlot ##
+RNAPlot(input)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ RNA }
+\keyword{ coord}% __ONLY ONE__ keyword per line

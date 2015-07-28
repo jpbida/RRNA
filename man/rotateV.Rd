@@ -5,71 +5,43 @@
 internal function to rotate a vector of points
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Rotates a set of points around a center point a given number of radians
 }
 \usage{
 rotateV(x2, y2, x0, y0, ang)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x2}{
-%%     ~~Describe \code{x2} here~~
+Vector containing x coordinates being rotated
 }
   \item{y2}{
-%%     ~~Describe \code{y2} here~~
+Vector containing y coordinates being rotated
 }
   \item{x0}{
-%%     ~~Describe \code{x0} here~~
+x coordinate of center of rotation
 }
   \item{y0}{
-%%     ~~Describe \code{y0} here~~
+y coordinate of center of rotation
 }
   \item{ang}{
-%%     ~~Describe \code{ang} here~~
+Angle of rotation given in radians
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+set of rotated points
 }
 \author{
-%%  ~~who you are~~
+JP Bida
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{rotateS}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x2, y2, x0, y0, ang) 
-{
-    pt <- NULL
-    x1 <- x2 - x0
-    y1 <- y2 - y0
-    pt$x <- x1 * cos(ang) - y1 * sin(ang) + x0
-    pt$y <- y1 * cos(ang) + x1 * sin(ang) + y0
-    pt
-  }
+x=c(1,0,-1,0)
+y=c(0,1,0,-1)
+pts=rotateV(x,y,0,0,pi/4)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ rotate }
+\keyword{ vector }% __ONLY ONE__ keyword per line

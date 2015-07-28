@@ -5,7 +5,7 @@
 internal function for translating points
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+internal function to translate points
 }
 \usage{
 translate(x1, y1, x2, y2)
@@ -13,58 +13,25 @@ translate(x1, y1, x2, y2)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{x1}{
-%%     ~~Describe \code{x1} here~~
+x coordinates being translated
 }
   \item{y1}{
-%%     ~~Describe \code{y1} here~~
+y coordinates being translated
 }
   \item{x2}{
-%%     ~~Describe \code{x2} here~~
+dx for translation
 }
   \item{y2}{
-%%     ~~Describe \code{y2} here~~
+dy for translation
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+set of points
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+JP Bida
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x1, y1, x2, y2) 
-{
-    out <- NULL
-    out$x <- x1 - x2
-    out$y <- y1 - y2
-    out
-  }
+## Internal Function ##
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ translate }

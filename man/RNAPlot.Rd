@@ -10,7 +10,6 @@ Given fold data from loadFolds or ct2coords RNAPlot plots the secondary structur
 \usage{
 RNAPlot(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5, modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL, tsize = 0.5, main = "", pointSize = 2, lineWd = 2)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{data}{
 R data frame containing the coordinates for plotting a given secondary structure 
@@ -104,27 +103,15 @@ The size of points plotted in the secondary structure. Values betwen 0.1-5 work 
 Line width for base pairings and backbone of secondary structures. 
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
 \value{
 Returns a generic R plot that can be used with the jpeg, postscript, etc. functions. 
-}
-\references{
-%% ~put references to the literature/web site here ~
 }
 \author{
 JP Bida
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-\code{\link{makeCt}},\code{\link{loadCoord}},\code{\link{ct2coord}}
+\code{\link{makeCt}},\code{\link{loadCoords}},\code{\link{ct2coord}}
 }
 \examples{
 
@@ -160,6 +147,6 @@ RNAPlot(dat,nt=TRUE,modspec=TRUE,modp=c(1:4,43:46),mod=c(17,17,15,15,16,16,16,16
 
 RNAPlot(dat)
 RNAPlot(dat,nt=TRUE,add=TRUE,dp=0.75)
-
+}
 \keyword{ rna }
 \keyword{ rnaplot }% __ONLY ONE__ keyword per line

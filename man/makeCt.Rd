@@ -5,85 +5,35 @@
 make a CT file from a structure and sequence
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Given an RNA secondary structure in bracket notation containing no pseudoKnots this function creates an R data frame that represents the secondary structures CT file.
 }
 \usage{
 makeCt(struct, seq)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{struct}{
-%%     ~~Describe \code{struct} here~~
+Bracket notation. 
+\code{st="(((((....)))))..((..))"}
 }
   \item{seq}{
-%%     ~~Describe \code{seq} here~~
+String containing the RNA sequence
+\code{seq="AUAAUUAAAAAAAACCCCCAAA"} 
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+Returns a data frame representing the bracket notaiton secondary structure in a CT file like format.
 }
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+JP Bida
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+st="(((((....)))))..((..))"
+seq="AUAAUUAAAAAAAACCCCCAAA"
 
-## The function is currently defined as
-function (struct, seq) 
-{
-    nts <- strsplit(seq, "")
-    nts <- nts[[1]]
-    stc <- strsplit(struct, "")
-    stc <- stc[[1]]
-    out <- NULL
-    for (i in 1:length(stc)) {
-        out$pos[i] = i
-        out$before[i] = (i - 1)
-        out$after[i] = (i + 1)
-        out$seq[i] = nts[i]
-        out$pos2[i] = i
-        if (stc[i] == ".") {
-            out$bound[i] = 0
-        }
-        else {
-            if (stc[i] == ")") {
-                b <- backward(stc, i)
-                out$bound[i] = b
-            }
-            else {
-                if (stc[i] == "(") {
-                  b <- forward(stc, i)
-                  out$bound[i] = b
-                }
-            }
-        }
-    }
-    out <- as.data.frame(out)
-    out
-  }
+ct=makeCt(st,seq) 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+\keyword{ RNA }
+\keyword{ CT }% __ONLY ONE__ keyword per line
