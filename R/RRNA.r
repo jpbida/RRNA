@@ -344,7 +344,7 @@ RNAPlot<-function(data,ranges=0,add=FALSE,hl=NULL,seqcols=NULL,seqTF=FALSE,labTF
 ###  >RNAPlot(aligned[aligned$id==0,])
 	l=1
 		if(seqTF){
-		s<-dat$seq
+		s<-data$seq
 		sequence<-paste(s,collapse="")
 		}
 		if(is.null(dim(ranges)) & length(seqcols)<1){l=0}
