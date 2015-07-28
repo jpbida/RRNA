@@ -40,8 +40,14 @@ JP Bida
 }
 \examples{
 ### Create two RNA secondary structures ####
-ct1=makeCt("((((...(((((((....)))))))...((((...))))...))))","CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
-ct2=makeCt("((((...(((((((....))))))).((..((...))))...))))","CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+ct1=makeCt(
+           "((((...(((((((....)))))))...((((...))))...))))",
+           "CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC" 
+          )
+ct2=makeCt(
+           "((((...(((((((....))))))).((..((...))))...))))",
+           "CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC" 
+          )
 
 ### Create a coordinate file ####
 dat1=ct2coord(ct1)

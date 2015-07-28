@@ -8,7 +8,12 @@ RNA secondary structure plotting from CT files
 Generates and RNA secondary structure plot from a CT file. Removes pseudoKnots automatically and allows them to be drawn back in with pseudoTF=TRUE.
 }
 \usage{
-aptPlotCT(file, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5, modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL, tsize = 0.5, main = "", pseudoTF = FALSE, pseudo_nums = NULL, ticks = NULL, ticksTF = FALSE)
+aptPlotCT(file, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL,
+          seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5, 
+          modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL, 
+          tsize = 0.5, main = "", pseudoTF = FALSE, pseudo_nums = NULL, 
+          ticks = NULL, ticksTF = FALSE
+         )
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -96,7 +101,9 @@ JP Bida
 }
 \examples{
 ### PseudoKnots ###
-pk=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+pk= makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
+          "AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC"
+         )
 pk$bound[pk$pos==20]=42
 pk$bound[pk$pos==19]=43
 pk$bound[pk$pos==43]=19

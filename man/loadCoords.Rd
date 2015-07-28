@@ -28,13 +28,17 @@ JP Bida
 
 \examples{
 ### Create a test coordinate file using ct2coord ###
-ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
+          "AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC" 
+         )
 coord=ct2coord(ct)
 ### add an id ###
 coord$id=1
 
 ### write out test file ###
-write.table(coord[,c('id','x','y','seq','num','bound')],col.names=FALSE,row.names=FALSE,sep=",",file="test.cr")
+write.table( coord[,c('id','x','y','seq','num','bound')],
+             col.names=FALSE,row.names=FALSE,sep=",",file="test.cr"
+           )
 
 ### Read in the coordinate file ##
 input=loadCoords("test.cr")

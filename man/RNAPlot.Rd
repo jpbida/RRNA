@@ -8,7 +8,10 @@ Generic RNA Secondary Structure Plotting Function
 Given fold data from loadFolds or ct2coords RNAPlot plots the secondary structure
 }
 \usage{
-RNAPlot(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5, modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL, tsize = 0.5, main = "", pointSize = 2, lineWd = 2)
+RNAPlot(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL,
+        seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5,
+        modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL,
+        tsize = 0.5, main = "", pointSize = 2, lineWd = 2)
 }
 \arguments{
   \item{data}{
@@ -116,7 +119,9 @@ JP Bida
 \examples{
 
 ## Create a CT file from bracket notation and sequence ###
-ct=makeCt("((((...(((((((....)))))))...((((...))))...))))","CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+ct=makeCt( "((((...(((((((....)))))))...((((...))))...))))",
+          "CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC"
+)
 
 ## Create a coordinate file based on the CT file ###
 dat=ct2coord(ct)
@@ -126,7 +131,9 @@ RNAPlot(dat)
 
 ### Plot positions 1:4 as green and 43:46 circles ## 
 ### and show the legend
-ranges=data.frame(min=c(1,43),max=c(4,46),col=c(2,3),desc=c("Region 1","Region 2"))
+ranges=data.frame(min=c(1,43),max=c(4,46),col=c(2,3),
+                  desc=c("Region 1","Region 2")
+                 )
 RNAPlot(dat,ranges,labTF=TRUE)
 
 ### Highlight the sequences CUCCU and CCCCAAA ###
@@ -135,13 +142,18 @@ RNAPlot(dat,hl=c("CUCCU","CCCCAAA"),seqcol=c(2,4),labTF=TRUE,main="RNA Molecule"
 
 ### Modify specific positions ####
 
-RNAPlot(dat,modspec=TRUE,modp=c(1:4,43:46),mod=c(17,17,15,15,16,16,16,16),modcol=c(rep(2,2),rep(3,2),rep(4,4)))
+RNAPlot( dat, modspec=TRUE, modp=c(1:4,43:46),mod=c(17,17,15,15,16,16,16,16),
+         modcol=c(rep(2,2),rep(3,2),rep(4,4))
+       )
 
 ### RNA Plot with nucleotides ###
 RNAPlot(dat,nt=TRUE)
 
 ### RNA plot with nucleotides
-RNAPlot(dat,nt=TRUE,modspec=TRUE,modp=c(1:4,43:46),mod=c(17,17,15,15,16,16,16,16),modcol=c(rep(2,2),rep(3,2),rep(4,4)))
+RNAPlot( dat,nt=TRUE,modspec=TRUE,modp=c(1:4,43:46),
+         mod=c(17,17,15,15,16,16,16,16),
+         modcol=c(rep(2,2),rep(3,2),rep(4,4))
+       )
 
 ### RNA Plot wiht nucleotides and dots ###
 

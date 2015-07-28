@@ -28,7 +28,9 @@ Pseudoknots sometimes cause trouble
 \code{\link{RNAPlot}}
 }
 \examples{
-ct=makeCt("((((...(((((((....)))))))...((((...))))...))))","CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+ct=makeCt("((((...(((((((....)))))))...((((...))))...))))",
+          "CCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC"
+         )
 coord=ct2coord(ct)
 RNAPlot(coord)
 }

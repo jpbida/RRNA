@@ -36,7 +36,8 @@ JP Bida
 }
 \examples{
 
-ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
+          "AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
 
 c1=ct2coord(ct)
 

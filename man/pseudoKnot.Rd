@@ -29,7 +29,8 @@ JP Bida
 \code{\link{ct2coord}},
 }
 \examples{
-pk=makeCt("((((...(((((((.........)))))))...((((.........))))...))))","AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
+pk=makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
+          "AAAAAAAACCCCCCCCAAAGGGGGGGAUUACCCCUCCUUUAAAAGGGUUUUCCCCCCC")
 pk$bound[pk$pos==20]=42
 pk$bound[pk$pos==19]=43
 pk$bound[pk$pos==43]=19
