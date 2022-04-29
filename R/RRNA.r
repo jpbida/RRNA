@@ -53,31 +53,22 @@
 # Bulge as Loop - 2,1,3
 
 # coord2comp - Splits RNA structure into self contained components used for RNA assembly
-fuzzy2ct <- function(dat) {
-  ## Read fuzzy_dat into c2 file
-  ## Remove PseudoKnots
-  ## Given pairs of numbers
-  ## (1,4)(2,5)(3,6) etc.
-  ## Identify the bracket representation
-  ## [ ( { ] ( } ) )  )
-  ## Such that a closing brackets for  open bracket m
-  ## does not occur for before closing brackets for n
-  ## when m < n
 
-  ## Remove Minimal amount of pairs such that no pair
-  ## doesn't contain every pair within its range
-
-  ## PairID,ContainsOutOfRange,ContainsInRange,IsOutOfRange
-
-  ## Basic - Loop through each pair, score,
-  ## remove base pair occuring most outsides
-  ## recalculate & repeat
-
-  ## If same pos is going to multiple
-  ## still works?
-
-
-  ### Get Maximum Range
+#' Convert pdf2fuzzy output into bracket notation
+#'
+#' Reads in "fuzzy" base pairing data output from pdb2fuzzy application in RSIM 
+#' (see https://github.com/jpbida/RSIM) and outputs bracket notation 
+#' for the secondary structure. The term "fuzzy" is used because the hydrogen bonds
+#' are determined probabilitically. When creating the bracket notion knots and multiple
+#' pairings are removed and an attempt to generate the secondary structure preserving
+#' the most base pairs is made. See \code{\link{pairScores}} 
+#' 
+#' @param dat A R data frame with the columns PDB,model,pos1,pos2,face1,face2,h-bonds
+#' @return bracket notiation for secondary structure i.e (((...)))  
+#' @examples 
+#'  
+#' fuzzy2ss(trna_basepairs)
+fuzzy2ss <- function(dat) {
   names(dat) <- c("pdb", "model", "pos1", "pos2", "face1", "face2", "h-bonds")
 
   mx <- max(dat$pos1, dat$pos2)
@@ -96,12 +87,18 @@ fuzzy2ct <- function(dat) {
   ss
 }
 
+#' Covert CT dataframe into bracket notation secondary structure
+#' 
+#' Given a CT file dataframe from \code{\link{makeCt}} or external program
+#' ct2ss generates a bracket notation for the secondary structure. 
+#'
+#' @param dat A CT file dataframe 
+#' @param cleanup Boolean indicating if knots should be removed from bracket notation
+#' @return bracket notation for secondary structure i.e (((...)))
+#' @examples 
+#' ct = makeCT("(((...)))","GGGAAACCC")
+#' ss = ct2ss(ct)
 ct2ss <- function(dat, cleanup = TRUE) {
-  ## Generate SS from CT file
-  ## If CT file contains knots or multiple pairings
-  ## cleanup=TRUE tries to generate the SS with most
-  ## base pairs preserved
-
   ss <- ""
   if (cleanup) {
     mx <- max(dat$pos, dat$pos2)
@@ -136,14 +133,39 @@ ct2ss <- function(dat, cleanup = TRUE) {
   ss
 }
 
+#' Splits RNA molecule into closed components from hydrogen bond data 
+#' 
+#' To generate component librarires for RNA design, existing RNA structures
+#' need to be decomposed into self-contained sub-components. \code{fuzzy2comp}
+#' uses the RSIM pdb2fuzzy output extracts all loops and helices in the structure
+#'   
+#' @inheritParams fuzzy2ss
+#' @examples
+#' components = fuzzy2comp(trna_basepairs)
+#' # plot the components
+#' ss = fuzzy2ss(trna_basepairs)
+#' ct = makeCt(ss,ss)
+#' coords = ct2coord(ct)
+#' par(mfrow=c(3,4))
+#' for(i in 1:nrow(components)){
+#'   s = strsplit(components$substructure[i],'')
+#'   modp = c(1:length(s[[1]]))[s[[1]]=="+"]
+#'   modcol = rep(2,length(modp))
+#'   mod = rep(16,length(modp))
+#'   RNAPlot(coords,mod=mod,modp=modp,modcol=modcol,modspec=TRUE,lineWd=0.1,pointSize=0.1)
+#'   if(i == 1){
+#'     mtext("tRNA Components", side = 3)
+#'   } 
+#' }
 fuzzy2comp <- function(dat) {
-  sct <- fuzzy2ct(dat)
+  sct <- fuzzy2ss(dat)
   ct <- makeCt(sct, paste(rep("A", nchar(sct)), collapse = ""))
   crd <- ct2coord(ct)
   comp <- coord2comp(crd)
   comp
 }
 
+#' Given pairings   
 pairScores <- function(PairDF) {
 
   ## Finds the minimum number of pairings to remove
@@ -619,19 +641,36 @@ RNAPlot <- function(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, se
   s2 <- min(c(data$x, data$y))
   if (add == FALSE) {
     plot(data$x, data$y, type = "n", xlab = "", ylab = "", axes = FALSE, xlim = c(s2, s1), ylim = c(s2, s1))
+    x0=c()
+    y0=c()
+    x1=c()
+    y1=c()
     for (i in data$num) {
-      if (data$bound[data$num == i] != -1) {
-        lines(c(data$x[data$num == i], data$x[data$num == data$bound[data$num == i]]), c(data$y[data$num == i], data$y[data$num == (data$bound[data$num == i])]), lwd = lineWd)
+      if (data$bound[data$num == i] != 0) {
+
+        x0=c(x0,data$x[data$num == i])
+        x1=c(x1,data$x[data$num == data$bound[data$num == i]])
+        y0=c(y0,data$y[data$num == i])
+        y1=c(y1,data$y[data$num == (data$bound[data$num == i])])
       }
     }
+  segments(x0,y0,x1,y1,lwd=lineWd)
   } else {
     if (add == TRUE) {
       points(data$x, data$y, type = "n")
+      x0=c()
+      y0=c()
+      x1=c()
+      y1=c()
       for (i in data$num) {
-        if (data$bound[data$num == i] != -1) {
-          lines(c(data$x[data$num == i], data$x[data$num == data$bound[data$num == i]]), c(data$y[data$num == i], data$y[data$num == (data$bound[data$num == i])]), lwd = lineWd)
+        if (data$bound[data$num == i] != 0) {
+          x0=c(x0,data$x[data$num == i])
+          x1=c(x1,data$x[data$num == data$bound[data$num == i]])
+          y0=c(y0,data$y[data$num == i])
+          y1=c(y1,data$y[data$num == (data$bound[data$num == i])])
         }
       }
+      segments(x0,y0,x1,y1,lwd=lineWd)
     }
   }
 
