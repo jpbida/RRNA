@@ -62,6 +62,7 @@ The above hl will highlight the nucleotides in the secondary structure that have
 Colors that should be used to highlight the sequences given in hl
 }
   \item{seqTF}{
+Unused argument included for backward compatibility 
 }
   \item{labTF}{
 TRUE/FALSE plot the legend
