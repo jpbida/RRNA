@@ -2,8 +2,7 @@ citation(auto = meta)
 
 bibentry(bibtype = "Article",
   title        = "Improved prediction of RNA tertiary structure with insights into native state dynamics.",
-  author       = personList(as.person("JP Bida"),
-                   as.person("LJ Maher")),
+  author       = c("JP Bida","LJ Maher"),
   journal      = "RNA",
   year         = "2012",
   volume       = "18",
