@@ -1,8 +1,8 @@
 # RNA 1.0.2
 
-* Added removal files generated during testing
+* Use temp files in example code 
 
-* Documented seqTF in Rd files
+* Documented functions
 
 # RNA 1.0.1
 
