@@ -1,19 +1,19 @@
 citHeader("To cite RRNA in publications use:")
 
-citEntry(entry = "Article",
+bibentry(bibtype = "Article",
   title        = "Improved prediction of RNA tertiary structure with insights into native state dynamics.",
-  author       = personList(as.person("JP Bida"),
-                   as.person("LJ Maher")),
+  author       = c(person("JP Bida"),
+                   person("LJ Maher")),
   journal      = "RNA",
   year         = "2012",
   volume       = "18",
   number       = "3",
   pages        = "385--93",
-  url          = "http://rnajournal.cshlp.org/",
+  url          = "https://rnajournal.cshlp.org/content/18/3/385",
 
   textVersion  =
   paste("JP Bida, LJ Maher (2012).",
         "Improved prediction of RNA tertiary structure with insights into native state dynamics.",
         "RNA, 18(3), 385-93",
-        "URL http://rnajournal.cshlp.org/")
+        "URL https://rnajournal.cshlp.org/content/18/3/385")
 )
