@@ -3,12 +3,16 @@ Type: Package
 Title: Secondary Structure Plotting for RNA
 Version: 1.3
 Date: 2024-04-24
-Authors@R: c(person("JP", "Bida", 
+Authors@R: c(
+             person("Jim", "Maher", 
+                    email="maher@mayo.edu", 
+                    role=c("ths")),
+             person("JP", "Bida", 
                     email="bida.john@gmail.com", 
                     role=c("aut","cre")),
              person("Jonathan", "Price", 
                     email="jlp76@cam.ac.uk", 
-                    role=c("aut","ctb"),
+                    role=c("ctb"),
                     comment = c(ORCID = "0000-0001-6554-5667")))
 Description: Functions for creating and manipulating RNA secondary structure plots.
 License: GPL-3
