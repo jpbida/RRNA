@@ -1,16 +1,14 @@
-citHeader("To cite RRNA in publications use:")
+citation(auto = meta)
 
 bibentry(bibtype = "Article",
   title        = "Improved prediction of RNA tertiary structure with insights into native state dynamics.",
-  author       = c(person("JP Bida"),
-                   person("LJ Maher")),
+  author       = c("JP Bida","LJ Maher"),
   journal      = "RNA",
   year         = "2012",
   volume       = "18",
   number       = "3",
   pages        = "385--93",
   url          = "https://rnajournal.cshlp.org/content/18/3/385",
-
   textVersion  =
   paste("JP Bida, LJ Maher (2012).",
         "Improved prediction of RNA tertiary structure with insights into native state dynamics.",

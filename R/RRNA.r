@@ -518,7 +518,7 @@ RNAPlot <- function(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, se
   ###  add: Should the new plot be added to an existing plot TRUE/FALSE
   ###  hl: Takes an array of sequences and highlights them with seqcol
   ###  seqcols: Colors that should be used to highlight the sequences given in hl
-  ###  seqTF
+  ###  seqTF: Unused argument included for backward compatibility 
   ###  labTF: Should a legend be plot TRUE/FALSE
   ###  nt: Plot the nucleotide sequence TRUE/FALSE
   ###  dp: Distance the nucleotide labels plotted using the nt option are from the
@@ -567,8 +567,10 @@ RNAPlot <- function(data, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, se
   ###  >RNAPlot(aligned[aligned$id==0,])
   l <- 1
   if (seqTF) {
-    s <- data$seq
-    sequence <- paste(s, collapse = "")
+    #TODO: Update version and remove seqTF as argument in function
+    # breaking backward compatibility
+    #s <- data$seq
+    #sequence <- paste(s, collapse = "")
   }
   if (is.null(dim(ranges)) & length(seqcols) < 1) {
     l <- 0
@@ -788,8 +790,10 @@ aptPlotCT <- function(file, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, 
   ## modcol - Color of the modification
   l <- 1
   if (seqTF) {
-    s <- dat$seq
-    sequence <- paste(s, collapse = "")
+    #TODO: Update major version and remove seqTF breaking
+    #backward compatibility
+    #s <- dat$seq
+    #sequence <- paste(s, collapse = "")
   }
   if (ranges == 0 & length(seqcols) < 1) {
     l <- 0

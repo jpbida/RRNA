@@ -40,11 +40,12 @@ pk$bound[pk$pos==42]=20
 
 ### Create a CT file for testing ###
 
-f = tempfile()
-write.table(pk[,c(1,4,2,3,6,5)],file=f,
+ctfile = tempfile(fileext = ".ct")
+
+write.table(pk[,c(1,4,2,3,6,5)],file=ctfile,
             row.names=FALSE,col.names=TRUE)
 
-ctfile=loadCt(f)
+ctfile=loadCt(ctfile)
 
 ### Before using ct2coord you need to remove the pseudo knots ###
 

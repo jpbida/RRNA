@@ -33,12 +33,13 @@ pk$bound[pk$pos==19]=43
 pk$bound[pk$pos==43]=19
 pk$bound[pk$pos==42]=20
 
-f = tempfile()
 ### Create a CT file for testing ###
-write.table(pk[,c(1,4,2,3,6,5)],file=f,row.names=FALSE,col.names=TRUE)
+ctfile = tempfile(fileext=".ct")
+write.table(pk[,c(1,4,2,3,6,5)],file=ctfile,row.names=FALSE,col.names=TRUE)
 
 ### Convert CT file to Knet ###
-out=ct2knet(f,0)
+out=ct2knet(ctfile,0)
+
 }
 \keyword{ KnetFold }
 \keyword{ RNA }% __ONLY ONE__ keyword per line
