@@ -39,6 +39,7 @@ pk$bound[pk$pos==43]=19
 pk$bound[pk$pos==42]=20
 
 ### Create a CT file for testing ###
+
 ctfile = tempfile(fileext = ".ct")
 
 write.table(pk[,c(1,4,2,3,6,5)],file=ctfile,

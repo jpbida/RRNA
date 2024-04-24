@@ -8,11 +8,10 @@ bibentry(bibtype = "Article",
   volume       = "18",
   number       = "3",
   pages        = "385--93",
-  url          = "https://rnajournal.cshlp.org/",
-
+  url          = "https://rnajournal.cshlp.org/content/18/3/385",
   textVersion  =
   paste("JP Bida, LJ Maher (2012).",
         "Improved prediction of RNA tertiary structure with insights into native state dynamics.",
         "RNA, 18(3), 385-93",
-        "URL https://rnajournal.cshlp.org/")
+        "URL https://rnajournal.cshlp.org/content/18/3/385")
 )

@@ -34,7 +34,6 @@ ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
 coord=ct2coord(ct)
 ### add an id ###
 coord$id=1
-
 ### write out test file ###
 crfile = tempfile(fileext=".cr")
 
@@ -44,7 +43,7 @@ write.table( coord[,c('id','x','y','seq','num','bound')],
 
 ### Read in the coordinate file ##
 input=loadCoords(crfile)
-
+  
 ### Plot the file using RNAPlot ##
 RNAPlot(input)
 }
