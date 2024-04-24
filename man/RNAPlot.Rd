@@ -62,6 +62,7 @@ The above hl will highlight the nucleotides in the secondary structure that have
 Colors that should be used to highlight the sequences given in hl
 }
   \item{seqTF}{
+  If sequence is a vector set as TRUE
 }
   \item{labTF}{
 TRUE/FALSE plot the legend

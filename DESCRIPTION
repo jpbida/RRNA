@@ -1,9 +1,18 @@
 Package: RRNA
 Type: Package
-Title: Secondary Structure Plotting for RNA 
-Version: 1.0
+Title: Secondary Structure Plotting for RNA
+Version: 1.1
 Date: 2015-07-27
+Authors@R: c(person("JP", "Bida", 
+                    email="bida.john@gmail.com", 
+                    role=c("aut","cre")),
+             person("Jonathan", "Price", 
+                    email="jlp76@cam.ac.uk", 
+                    role=c("ctb"),
+                    comment = c(ORCID = "0000-0001-6554-5667")))
 Author: JP Bida
-Maintainer: JP Bida <bida.john@gmail.com>
+Maintainer: Jonathan Price <jlp76@cam.ac.uk>
 Description: Functions for creating and manipulating RNA secondary structure plots.
 License: GPL-3
+NeedsCompilation: no
+Packaged: 2024-04-24 10:45:18 UTC; jp

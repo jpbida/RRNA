@@ -33,7 +33,7 @@ ct=makeCt("((((...))))","AAAACCCUUUU")
 ### Create the coordinate file ###
 dat=ct2coord(ct)
 
-bplfile(dat,"test.bpl")
+bplfile(dat,tempfile())
 }
 \keyword{ RNA }
 \keyword{ bpl }% __ONLY ONE__ keyword per line

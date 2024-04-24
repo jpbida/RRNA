@@ -34,14 +34,14 @@ ct=makeCt("((((...(((((((.........)))))))...((((.........))))...))))",
 coord=ct2coord(ct)
 ### add an id ###
 coord$id=1
-
+f = tempfile()
 ### write out test file ###
 write.table( coord[,c('id','x','y','seq','num','bound')],
-             col.names=FALSE,row.names=FALSE,sep=",",file="test.cr"
+             col.names=FALSE,row.names=FALSE,sep=",",file=f
            )
 
 ### Read in the coordinate file ##
-input=loadCoords("test.cr")
+input=loadCoords(f)
 
 ### Plot the file using RNAPlot ##
 RNAPlot(input)

@@ -39,6 +39,7 @@ The above hl will highlight the nucleotides in the secondary structure that have
 Colors that should be used to highlight the sequences given in hl
 }
   \item{seqTF}{
+If sequence is a vector set as TRUE
 }
   \item{labTF}{
 TRUE/FALSE plot the legend
@@ -108,11 +109,11 @@ pk$bound[pk$pos==20]=42
 pk$bound[pk$pos==19]=43
 pk$bound[pk$pos==43]=19
 pk$bound[pk$pos==42]=20
-
+f = tempfile()
 ### Create a CT file for testing ###
-write.table(pk[,c(1,4,2,3,6,5)],file="test.ct",row.names=FALSE,col.names=TRUE)
+write.table(pk[,c(1,4,2,3,6,5)],file=f,row.names=FALSE,col.names=TRUE)
 
-aptPlotCT("test.ct",ticksTF=TRUE,ticks=seq(1,60,by=5),pseudoTF=TRUE,pseudo_nums=c(19,20,43,42))
+aptPlotCT(f,ticksTF=TRUE,ticks=seq(1,60,by=5),pseudoTF=TRUE,pseudo_nums=c(19,20,43,42))
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the

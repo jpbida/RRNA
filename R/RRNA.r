@@ -767,6 +767,8 @@ transformFold <- function(dat, x0, y0, ang) {
   dat$y <- new$y
   dat
 }
+
+
 aptPlotCT <- function(file, ranges = 0, add = FALSE, hl = NULL, seqcols = NULL, seqTF = FALSE, labTF = FALSE, nt = FALSE, dp = 0.5, modspec = FALSE, modp = NULL, mod = NULL, modcol = NULL, tsize = 0.5, main = "", pseudoTF = FALSE, pseudo_nums = NULL, ticks = NULL, ticksTF = FALSE) {
   ### Load CT file ###
   dat <- loadCt(file)
